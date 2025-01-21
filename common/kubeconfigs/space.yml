@@ -31,7 +31,7 @@ spec:
             name: space
           contexts:
           - context:
-              cluster:space
+              cluster: space
               user: sa-tanzu-platform-user
             name: space
           current-context: space
