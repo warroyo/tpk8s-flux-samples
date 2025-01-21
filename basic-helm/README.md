@@ -15,5 +15,5 @@ If you have not already followed [the setup in the main Readme](../README.md#set
 1. apply the base flux kustomization, if you already have a full gitops setup you do not need to run this manually and can add it to your existing repo.
 
 ```bash
-
+kubectl apply -k bootstrap
 ```
