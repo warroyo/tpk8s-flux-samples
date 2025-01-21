@@ -12,8 +12,15 @@ This section can be used to setup the components needed to integrate flux with T
 
 This section is done manually but if you have an existing gitops env with secrets management, you can instead use gitosp to install the pre-reqs. This will install the necessary software to be able to use flux with Tanzu Platform.
 
+1. update the [kubeconfigs](./common/kubeconfigs/) to use your server urls. Each url can be found by running the following per context. below is an example for project context.
 
-1. create the secret needed for the token controller. this should be your CSP token.
+```bash
+tanzu project use AMER-West
+export KUBECONFIG=~/.config/tanzu/kube/config
+kubectl config view --minify -o json | jq -r '.clusters[0].cluster.server'
+```
+
+2. create the secret needed for the token controller. this should be your CSP token.
 
 ```bash
 cat <<'EOF' >common/pre-reqs/generator.env
@@ -21,7 +28,7 @@ CSP_TOKEN=<your-token>
 EOF
 ```
 
-2. deploy the namespace, secret for the controller,  along with a flux kustomization to sync the controller and ESO.
+3. deploy the namespace, secret for the controller,  along with a flux kustomization to sync the controller, ESO, and kubconfigs.
 
 ```bash
 kubectl apply -k common/pre-reqs              
