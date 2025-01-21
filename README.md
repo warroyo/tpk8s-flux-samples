@@ -37,6 +37,7 @@ kubectl apply -k common/pre-reqs
 
 ## Samples
 
+Follow the readme in each sample for how to deploy. 
 
 [no packaging](./no-packaging/) - This example does not use any k8s packaging(carve;, helm etc.) it just uses native K8s CRDs and Kustomize for any customizations. 
 

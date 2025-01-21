@@ -1,9 +1,6 @@
-# No Packing 
+# Basic Helm
 
-This example does not use any K8s packaging software, so there is no use of helm or carvel etc. This approach uses Kustomize and native k8s resources like `Deployments`. This is a good approach if you are looking to just use Kustomize and want to manage K8s resources without any abstraction around them. This example has been simplified so it only handles one clustergroup, project and space. This could easily be extended into a larger repos with multiple of each.
-
-
-
+This example shows how to setup TPK8s with flux for deploying a simple helm chart. It covers setting up the capabilties needs, a space with the correct profiles, and deploying the app to that space.
 
 # Architecture
 
@@ -12,4 +9,11 @@ This example does not use any K8s packaging software, so there is no use of helm
 
 # Setup
 
-This assumes you have already installed Flux. 
+If you have not already followed [the setup in the main Readme](../README.md#setup), do that now.
+
+
+1. apply the base flux kustomization, if you already have a full gitops setup you do not need to run this manually and can add it to your existing repo.
+
+```bash
+
+```
