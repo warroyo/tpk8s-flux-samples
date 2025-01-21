@@ -26,7 +26,7 @@ spec:
           apiVersion: v1
           clusters:
           - cluster:
-              server: https://ucp.platform.tanzu.broadcom.com/org/77aee83b-308f-4c8e-b9c4-3f7a6f19ba75/project/3b65ba5e-52a4-4666-ad29-4eefab93127b/space/test-deployments
+              server: https://ucp.platform.tanzu.broadcom.com/org/77aee83b-308f-4c8e-b9c4-3f7a6f19ba75/project/3b65ba5e-52a4-4666-ad29-4eefab93127b/space/helm-app-space
             name: space
           contexts:
           - context:
