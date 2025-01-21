@@ -21,7 +21,7 @@ spec:
       containers:
       - name: controller
         imagePullPolicy: Always
-        image: ghcr.io/warroyo/token-generator:1.0.0
+        image: ghcr.io/warroyo/token-generator:20241010.1423.29276
         envFrom:
           - secretRef:
               name: token-generator-env
