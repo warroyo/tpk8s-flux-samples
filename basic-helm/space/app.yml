@@ -1,0 +1,82 @@
+
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: python-sample2-helm-repo
+spec:
+  interval: 1m
+  url: https://github.com/warroyo/tpk8s-flux-samples
+  ref:
+    branch: master
+  ignore: |
+    # exclude all
+    /*
+    # include charts directory
+    !/basic-helm/app-chart    
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name:  python-sample2
+spec:
+  serviceAccountName: fluxcd-helmrelease-installer
+  interval: 10m
+  timeout: 5m
+  chart:
+    spec:
+      chart: ./basic-helm/app-chart
+      reconcileStrategy: Revision
+      sourceRef:
+        kind: GitRepository
+        name: python-sample2-helm-repo
+      interval: 5m
+  releaseName: python-sample2
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  valuesFrom:
+    - kind: Secret
+      name: python-sample2-values
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: python-sample2-values
+type: Opaque
+stringData:
+  values.yaml: |
+    replicaCount: 2
+---
+apiVersion: apps.tanzu.vmware.com/v1
+kind: ContainerApp
+metadata:
+  name: python-sample2
+  labels:
+
+  annotations:
+    containerapp.apps.tanzu.vmware.com/class: "kubernetes"
+spec:
+  description: python app
+  contact:
+    slack: "#my-helm-apps"
+  image:  us-west1-docker.pkg.dev/fe-cpage/west-sa-build-registry/warroyo/python-sample@sha256:3860285440297e3fa086acb33a1df1eeca9a3c26aad932af049e26db5033ccfe
+  replicas: 1
+  relatedRefs:
+    - for: kubernetes.list-replicas
+      kind: Pod
+      labelSelector: app=python-sample2
+    - for: kubernetes.scale-replicas
+      kind: Secret
+      name: python-sample2-values
+      keyPath: .data['values.yaml']->[yaml].replicaCount
+    - for: kubernetes.delete
+      kind: HelmRelease
+      apiGroup: helm.toolkit.fluxcd.io
+      name: python-sample2
+    - for: kubernetes.delete
+      kind: Secret
+      name: python-sample2

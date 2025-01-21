@@ -1,0 +1,11 @@
+apiVersion: packaging.carvel.dev/v1alpha1
+kind: PackageRepository
+metadata:
+  annotations:
+    kctrl.carvel.dev/repository-version: 1.0.2
+  creationTimestamp: "2025-01-20T18:19:49Z"
+  name: capabilities.se.ext.tanzu.com
+spec:
+  fetch:
+    imgpkgBundle:
+      image: ghcr.io/tanzu-solutions-engineering/tanzu-platform-capabilties/repo@sha256:38191dea43d9638dd2c36d51dace2fba1fbc0b02ec685f6288fa478aacbc2bf3
