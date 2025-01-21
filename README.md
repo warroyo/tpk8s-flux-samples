@@ -6,7 +6,7 @@ This repo has a collection of different approaches to using flux with Tanzu plat
 
 
 # Setup
-
+This section can be used to setup the components needed to integrate flux with TPK8s. This is a common setup that will be needed for each sample to work. 
 
 ## pre-reqs
 
@@ -21,11 +21,12 @@ CSP_TOKEN=<your-token>
 EOF
 ```
 
-2. deploy the namespace and secret for the controller along with a flux kustomization to sync the controller.
+2. deploy the namespace, secret for the controller,  along with a flux kustomization to sync the controller and ESO.
 
 ```bash
 kubectl apply -k common/pre-reqs              
 ```
+
 
 ## Samples
 

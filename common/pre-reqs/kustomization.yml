@@ -3,8 +3,11 @@ kind: Kustomization
 namespace: ucp-token-generator
 resources:
 - ns.yml
+- base.yml
 
 secretGenerator:
 - name: token-generator-env
   envs:
   - generator.env
+  options:
+      disableNameSuffixHash: true

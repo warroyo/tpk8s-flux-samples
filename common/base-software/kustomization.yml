@@ -5,3 +5,4 @@ resources:
 - deployment.yml
 - rbac.yml
 - eso.yml
+- secretstore.yml
