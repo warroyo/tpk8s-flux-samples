@@ -1,13 +1,26 @@
-# expose the deployments and services capabilties
 apiVersion: packaging.carvel.dev/v1alpha1
 kind: PackageInstall
 metadata:
-  name: deployments.se.ext.tanzu.com
+  name: fluxcd-helm-controller.tanzu.vmware.com
   namespace: default
 spec:
   defaultNamespace: unusable-namespace
   packageRef:
-    refName: deployments.se.ext.tanzu.com
+    refName: fluxcd-helm-controller.tanzu.vmware.com
+    versionSelection:
+      constraints: '>0.0.0'
+      prereleases: {}
+  serviceAccountName: pkg-installs-sa
+---
+apiVersion: packaging.carvel.dev/v1alpha1
+kind: PackageInstall
+metadata:
+  name: fluxcd-source-controller.tanzu.vmware.com
+  namespace: default
+spec:
+  defaultNamespace: unusable-namespace
+  packageRef:
+    refName: fluxcd-source-controller.tanzu.vmware.com
     versionSelection:
       constraints: '>0.0.0'
       prereleases: {}
