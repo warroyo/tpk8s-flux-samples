@@ -2,8 +2,8 @@
 apiVersion: secretgen.carvel.dev/v1alpha1
 kind: SecretImport
 metadata:
-  name: space-kubeconfig
-  namespace: basic-helm
+  name: clustergroup-kubeconfig
+  namespace: no-packaging
 spec:
   fromNamespace: ucp-token-generator
   
@@ -11,16 +11,16 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: space
-  namespace: basic-helm
+  name: clustergroup
+  namespace: no-packaging
 spec:
   force: false
   interval: 1m0s
-  path: ./basic-helm/space
+  path: ./no-packaging/clustergroup
   prune: true
   sourceRef:
     kind: GitRepository
-    name: basic-helm
+    name: no-packaging
   kubeConfig:
     secretRef:
-      name: space-kubeconfig
+      name: clustergroup-kubeconfig

@@ -3,7 +3,7 @@ apiVersion: secretgen.carvel.dev/v1alpha1
 kind: SecretImport
 metadata:
   name: project-kubeconfig
-  namespace: tpk8s-flux
+  namespace: basic-helm
 spec:
   fromNamespace: ucp-token-generator
   
@@ -12,7 +12,7 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: project
-  namespace: tpk8s-flux
+  namespace: basic-helm
 spec:
   force: false
   interval: 1m0s

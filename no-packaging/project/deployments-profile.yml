@@ -1,0 +1,9 @@
+apiVersion: spaces.tanzu.vmware.com/v1alpha1
+kind: Profile
+metadata:
+  name: deployments
+  namespace: default
+spec:
+  description: add k8s deployments and services
+  requiredCapabilities:
+  - name: deployments.se.ext.tanzu.com
