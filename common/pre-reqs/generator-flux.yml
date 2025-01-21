@@ -1,0 +1,25 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: ucp-token-generator
+  namespace: ucp-token-generator
+spec:
+  interval: 5m0s
+  url: https://github.com/warroyo/tpk8s-flux-samples
+  ref:
+    branch: main
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: ucp-token-generator
+  namespace: ucp-token-generator
+spec:
+  interval: 10m
+  targetNamespace: ucp-token-generator
+  sourceRef:
+    kind: GitRepository
+    name:  ucp-token-generator
+  path: ./common/base-software
+  prune: true
+  timeout: 1m

@@ -1,0 +1,27 @@
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ucp-token-generator
+  namespace: ucp-token-generator
+  labels:
+    app: token-generator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: token-generator
+  template:
+    metadata:
+      labels:
+        app: token-generator
+    spec:
+      serviceAccountName: token-generator
+      containers:
+      - name: controller
+        imagePullPolicy: Always
+        image: ghcr.io/warroyo/token-generator:1.0.0
+        envFrom:
+          - secretRef:
+              name: token-generator-env
