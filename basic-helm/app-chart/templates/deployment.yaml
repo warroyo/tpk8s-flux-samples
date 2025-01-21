@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: python-sample2
-  namespace: default
   labels:
     app: python-sample2
 spec:

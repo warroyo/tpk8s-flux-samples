@@ -8,7 +8,7 @@ spec:
   interval: 1m
   url: https://github.com/warroyo/tpk8s-flux-samples
   ref:
-    branch: master
+    branch: main
   ignore: |
     # exclude all
     /*
@@ -38,25 +38,13 @@ spec:
   upgrade:
     remediation:
       retries: 3
-  valuesFrom:
-    - kind: Secret
-      name: python-sample2-values
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: python-sample2-values
-type: Opaque
-stringData:
-  values.yaml: |
+  values:
     replicaCount: 2
 ---
 apiVersion: apps.tanzu.vmware.com/v1
 kind: ContainerApp
 metadata:
   name: python-sample2
-  labels:
-
   annotations:
     containerapp.apps.tanzu.vmware.com/class: "kubernetes"
 spec:
@@ -70,9 +58,10 @@ spec:
       kind: Pod
       labelSelector: app=python-sample2
     - for: kubernetes.scale-replicas
-      kind: Secret
-      name: python-sample2-values
-      keyPath: .data['values.yaml']->[yaml].replicaCount
+      kind: HelmRelease
+      apiGroup: helm.toolkit.fluxcd.io
+      name: python-sample2
+      keyPath: .spec.values.replicaCount
     - for: kubernetes.delete
       kind: HelmRelease
       apiGroup: helm.toolkit.fluxcd.io
