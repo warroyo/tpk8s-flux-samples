@@ -2,4 +2,4 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: no-packaging
+  name: tpk8s-secrets-mgmt

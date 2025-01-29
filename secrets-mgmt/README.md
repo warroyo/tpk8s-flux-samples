@@ -1,16 +1,16 @@
-# No Packing 
+# Basic Helm
 
-This example does not use any K8s packaging software, so there is no use of helm or carvel etc. This approach uses Kustomize and native k8s resources like `Deployments`. This is a good approach if you are looking to just use Kustomize and want to manage K8s resources without any abstraction around them. This example has been simplified so it only handles one clustergroup, project and space. This could easily be extended into a larger repos with multiple of each.
-
+This example shows how to setup TPK8s with flux for deploying a simple helm chart. It covers setting up the capabilties needs, a space with the correct profiles, and deploying the app to that space.
 
 
 # Structure
 
+`app-chart` - simple helm chart for the app
 `bootstrap` - contains the initial boostrap resources, this sets up the kustomization to sync all of the resources
 `flux-resources` -  this is what the boostrap targets, this imports the kubeconfig secrets  and creates a kustomization per context(space,clustergroup,project)
-`space` - contains all resources applied to a space, in this case the raw k8s yaml to be applied to the space.
+`space` - contains all resources applied to a space, in this case the helm release and a containerapp
 `project` - contains all resources applied to the project, this creates the space.
-`clustergroup` -  contains all resources applied to the clustergroup, in this case it adds the required capabilities for deployments.
+`clustergroup` -  contains all resources applied to the clustergroup, in this case it adds the  required flux capabilties for helm and source.
 
 # Architecture
 

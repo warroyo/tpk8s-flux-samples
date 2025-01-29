@@ -39,7 +39,7 @@ kubectl apply -k common/pre-reqs
 
 Follow the readme in each sample for how to deploy. 
 
-[no packaging](./no-packaging/) - This example does not use any k8s packaging(carve;, helm etc.) it just uses native K8s CRDs and Kustomize for any customizations. 
+[secrets-mgmt](./secrets-mgmt/) - This exmaple shows how to manage secrets in a gitops way using [ESO](https://external-secrets.io/latest/) and TPK8s. 
 
 
 [basic-helm](./basic-helm/) -  this example has a basic helm chart that install an app via helm release and has a containerapp to track the resources created by helm.

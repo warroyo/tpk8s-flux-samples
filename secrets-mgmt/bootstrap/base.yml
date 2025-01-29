@@ -2,8 +2,8 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
-  name: no-packaging
-  namespace: no-packaging
+  name: tpk8s-secrets-mgmt
+  namespace: tpk8s-secrets-mgmt
 spec:
   interval: 5m0s
   url: https://github.com/warroyo/tpk8s-flux-samples
@@ -13,14 +13,14 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: no-packaging
-  namespace: no-packaging
+  name: tpk8s-secrets-mgmt
+  namespace: tpk8s-secrets-mgmt
 spec:
   interval: 10m
-  targetNamespace: no-packaging
+  targetNamespace: tpk8s-secrets-mgmt
   sourceRef:
     kind: GitRepository
-    name:  basic-helm
-  path: ./no-packaging/flux-resources
+    name:  tpk8s-secrets-mgmt
+  path: ./secrets-mgmt/flux-resources
   prune: true
   timeout: 1m
