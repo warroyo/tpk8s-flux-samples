@@ -22,9 +22,9 @@ spec:
       - name: controller
         imagePullPolicy: Always
         image: ghcr.io/warroyo/token-generator:2.0.0
-        env:
-          - name: TARGET_NAMESPACE
-            value: testing
+        # env:
+        #   - name: TARGET_NAMESPACE
+        #     value: testing
         envFrom:
           - secretRef:
               name: token-generator-env
