@@ -11,7 +11,7 @@ This example shows how to setup TPK8s with flux for secrets mgmt. The core use c
 # Architecture
 
 
-![alt text](image.png)
+![alt text](image-1.png)
 
 # Setup
 
