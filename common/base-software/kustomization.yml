@@ -6,3 +6,4 @@ resources:
 - rbac.yml
 - eso.yml
 - kubeconfigs.yml
+- export.yml

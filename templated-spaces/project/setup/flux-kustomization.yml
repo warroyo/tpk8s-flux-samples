@@ -1,0 +1,27 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: amer-west
+  namespace: amer-west
+spec:
+  interval: 5m0s
+  url: https://github.com/warroyo/tpk8s-flux-samples
+  ref:
+    branch: main
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: amer-west #project name
+  namespace: amer-west
+spec:
+  force: false
+  interval: 1m0s
+  path: ./templated-spaces/project
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: amer-west
+  kubeConfig:
+    secretRef:
+      name: amer-west-kubeconfig
