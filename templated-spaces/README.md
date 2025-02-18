@@ -42,12 +42,12 @@ This example shows how to structure a flux repo for re-use when deploying multip
 │       │   │   └── kustomization.yml # defines the space definition, this is used by the project kustomization to create the space
 │       │   ├── kustomization.yml # defines the resources that should be deployed into the space
 │       │   └── setup # space setup, these resources are all installed on the local bootstrap cluster. ex. flux kustomziation to target the space and it's kubeconfig
-│       │       ├── flux-kustomization.yml
-│       │       ├── kubeconfig
+│       │       ├── flux-kustomization.yml # the kustomziation that targets the space in tpk8s
+│       │       ├── kubeconfig # overlay for the base kubeconfig to target the space
 │       │       │   ├── kubeconfig-patch.yml
 │       │       │   └── kustomization.yml
 │       │       ├── kustomization.yml
-│       │       └── space-secret.yml
+│       │       └── space-secret.yml # used by the kubeconfig templating
 │       └── space-2 # see above
 │           ├── app.yml
 │           ├── definition
