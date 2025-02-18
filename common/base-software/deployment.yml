@@ -21,7 +21,7 @@ spec:
       containers:
       - name: controller
         imagePullPolicy: Always
-        image: ghcr.io/warroyo/token-generator:2.0.0
+        image: ghcr.io/warroyo/token-generator:2.0.1
         # env:
         #   - name: TARGET_NAMESPACE
         #     value: testing
