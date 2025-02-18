@@ -16,7 +16,7 @@ metadata:
 spec:
   interval: 10m
   ref:
-    branch: v0.13.0
+    tag: v0.13.0
   url: http://github.com/external-secrets/external-secrets
 
 ---
