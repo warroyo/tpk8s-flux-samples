@@ -1,0 +1,23 @@
+apiVersion: spaces.tanzu.vmware.com/v1alpha1
+kind: Space
+metadata:
+  name: replace
+  namespace: default
+spec:
+  availabilityTargets:
+  - name: warroyo-aks-v2
+    replicas: 1
+  revisionHistoryLimit: 10
+  template:
+    spec:
+      profiles:
+      - name: apps.tanzu.vmware.com
+        values:
+          inline: null
+      - name: fluxcd-helm.tanzu.vmware.com
+        values:
+          inline: null
+      resources: {}
+  updateStrategy:
+    type: RollingUpdate
+

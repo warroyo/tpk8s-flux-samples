@@ -8,6 +8,8 @@ spec:
   force: false
   interval: 1m0s
   path: ./templated-spaces/project/spaces/space-2
+  dependsOn:
+  - name: amer-west
   prune: true
   sourceRef:
     kind: GitRepository
