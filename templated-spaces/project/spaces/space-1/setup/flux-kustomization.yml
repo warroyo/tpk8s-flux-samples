@@ -7,6 +7,8 @@ metadata:
 spec:
   force: false
   interval: 1m0s
+  dependsOn:
+  - name: amer-west
   path: ./templated-spaces/project/spaces/space-1
   prune: true
   sourceRef:
