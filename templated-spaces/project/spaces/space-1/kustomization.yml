@@ -3,3 +3,9 @@ kind: Kustomization
 namespace: default
 resources:
 -  app.yml
+
+configMapGenerator:
+- name: config-map
+  literals:
+  - KEY=VALUE
+  - KEY2=VALUE2
